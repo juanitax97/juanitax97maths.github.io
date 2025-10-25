@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Loi des estimateur de moyenne et variance - Mon site</title>
+    <link rel="stylesheet" href="/uioli/assets/main.css">
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true
+        },
+        svg: {
+            fontCache: 'global'
+        }
+    };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+  </head>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("article").forEach(el => {
+        el.innerHTML = el.innerHTML
+        .replace(/:::correction/g, '<div class="correction">')
+        .replace(/:::/g, '</div>');
+    });
+    });
+    </script>
+    <script src="/uioli/assets/js/corrections.js"></script>
+    <!-- Bouton fixe "Retour à l'accueil" -->
+<a href="/uioli/" id="back-home">🏠 Accueil</a>
+
+<style>
+#back-home {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #2b6cb0;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: background 0.2s ease;
+  z-index: 1000;
+}
+#back-home:hover {
+  background: #2c5282;
+}
+</style>
+
+  <body>
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Loi des estimateur de moyenne et variance</h1>
+  </header>
+
+  <div class="post-content">
+    <h2 id="exercice-3">Exercice 3</h2>
+
+<p>Soient $X_1,\cdots, X_n$ un échantillon de loi $N(\mu,\sigma^2)$. On défini :
+\(\overline{X_n} = \frac{1}{n}\sum_{i=1}^n X_i \quad \quad ; \quad \quad \widehat{S_n^2} = \frac{1}{n-1} \sum (X_i-\overline{X_n})^2\)</p>
+<ol>
+  <li>Montrer que $\widehat{S_n^2}$ et $\overline{X_n}$ sont indépendantes.</li>
+  <li>Montrer que 
+\(\overline{X_n} \sim \mathcal{N}(\mu, \sigma^2/n) \quad \text{et} \quad \frac{(n-1)}{\sigma^2}\widehat{S_n^2} \sim \chi^2(n-1)\)</li>
+</ol>
+
+<hr />
+
+<p>:::correction 
+Soit 
+\(X = \begin{pmatrix} X_1 \\ \vdots \\ X_n\end{pmatrix}\) on pose 
+\(Y = \frac{1}{\sigma}\begin{pmatrix} X_1 - \mu \\ \vdots \\ X_n-\mu\end{pmatrix}\). C’est un vecteur de loi $N(0,I_n)$. Soit \(u = \begin{pmatrix} 1/\sqrt{n} \\ \vdots \\ 1/\sqrt{n}\end{pmatrix}\). Ce vecteur est de norme 1. Considérons $P_u$ le projeté orthogonal sur $u$
+\(P_u(Y) = \langle u,Y \rangle u =  \frac{1}{\sqrt{n}}\sum_{i=1}^n Y_i\begin{pmatrix} 1/\sqrt{n} \\ \vdots \\ 1/\sqrt{n}\end{pmatrix} = \begin{pmatrix} \overline{Y_n} \\ \vdots \\ \overline{Y_n}\end{pmatrix} = \frac{1}{\sigma}\begin{pmatrix} \overline{X_n}-\mu \\ \vdots \\ \overline{X_n}-\mu\end{pmatrix}\)
+Par ailleurs, comme $P_{u^\perp} = Id - P_u$, on obtient:
+\(P_{u^\perp}(Y) = \frac{1}{\sigma}\begin{pmatrix} X_1 - \mu \\ \vdots \\ X_n-\mu\end{pmatrix} - \frac{1}{\sigma}\begin{pmatrix} \overline{X_n}-\mu \\ \vdots \\ \overline{X_n}-\mu\end{pmatrix} = \frac{1}{\sigma}\begin{pmatrix} X_1-\overline{X_n} \\ \vdots \\ X_n -\overline{X_n}\end{pmatrix}\)
+Ainsi, on obtient que $||P_u(Y)||^2 = \frac{n}{\sigma^2}(\overline{X_n}-\mu)^2$ et $||P_{u^\perp}(Y)||^2 = \frac{n-1}{\sigma^2}\widehat{S_n^2}$. Grâce au deuxième point de cochran appliqué au vecteur gaussien $Y$ avec la décomposition $E = u \oplus^\perp u^\perp$ on sait que $||P_u(Y)||^2$ et $||P_{u^\perp}(Y)||^2$ sont indépendant, et donc que $\frac{n}{\sigma^2}(\overline{X_n}-\mu)^2$ et $\frac{n-1}{\sigma^2}\widehat{S_n^2}$ sont indépendant, ce qui signifie bien que $\overline{X_n}$ et $\widehat{S_n^2}$ sont independantes. Par ailleurs, cochran nous dit que $||P_{u^\perp}(Y)||^2 \sim \chi^2(n-1)$ car $\text{dim}(\text{vect}(u)^\perp) = n-1$, ce qui nous donne que $\frac{n-1}{\sigma^2}\widehat{S_n^2} \sim \chi^2(n-1)$
+:::</p>
+
+<hr />
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+  </body>
+</html>

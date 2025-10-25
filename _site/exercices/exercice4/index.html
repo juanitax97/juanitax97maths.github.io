@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Gradient de l&#39;inverse et du det et application - Mon site</title>
+    <link rel="stylesheet" href="/uioli/assets/main.css">
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true
+        },
+        svg: {
+            fontCache: 'global'
+        }
+    };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+  </head>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("article").forEach(el => {
+        el.innerHTML = el.innerHTML
+        .replace(/:::correction/g, '<div class="correction">')
+        .replace(/:::/g, '</div>');
+    });
+    });
+    </script>
+    <script src="/uioli/assets/js/corrections.js"></script>
+    <!-- Bouton fixe "Retour à l'accueil" -->
+<a href="/uioli/" id="back-home">🏠 Accueil</a>
+
+<style>
+#back-home {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #2b6cb0;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: background 0.2s ease;
+  z-index: 1000;
+}
+#back-home:hover {
+  background: #2c5282;
+}
+</style>
+
+  <body>
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Gradient de l&#39;inverse et du det et application</h1>
+  </header>
+
+  <div class="post-content">
+    <h2 id="exercice-4-ltffp-p25-bach">Exercice 4 (ltffp p.25, Bach)</h2>
+
+<ol>
+  <li>Let $\phi : Gl_n(\mathbb{R}) \to Gl_n(\mathbb{R}), A \mapsto A^{-1}$. Show that \(d\phi(A)(H) = -A^{-1}HA^{-1}\).</li>
+  <li>Let $A$ be a symmetric matrix. Show that the gradient of the function $M \mapsto \text{tr}(AM^{-1})$, defined on invertible symmetric matrices, is equal to $M \mapsto -M^{-1}AM^{-1}$.</li>
+  <li>Show that the gradient of the determinant of $A \in Gl_n(\mathbb{R})$ is $\text{com}(A)^T$</li>
+  <li>Show that the gradient of $M \mapsto \log \det(M)$ is $M \mapsto M^{-1}$.
+\end{exo}</li>
+</ol>
+
+<hr />
+
+<p>:::correction</p>
+<ol>
+  <li>Calculer le grandient en I et remarquer que $(I+H)(I-H+H^2 + \cdots) = I$</li>
+  <li>Soit $\phi : M \mapsto \text{tr}(AM^{-1})$. On voit que $\phi = f\circ g$ où $f : B \mapsto \text{tr}(AB)$ et $g : C \mapsto C^{-1}$. $f$ est linéaire donc sa différentielle est elle même, et classiquement $Dg(M)(H)=-M^{-1}HM^{-1}$. Ainsi,</li>
+</ol>
+
+\[\begin{align}
+    d\phi(M)(H) &amp;= Df(g(M))(Dg(M)(H))\\
+                &amp;= \text{tr}(A(-M^{-1}HM^{-1}))\\
+                &amp;= \langle -\left((M^{-1})^TAM^{-1}\right)^T , H \rangle
+\end{align}\]
+
+<p>où on utilise dans la dernière ligne la commutativité du produit matricielle sous la trace, ce qui permet de conclure par la symétrie de M et A que $\nabla \phi(M) = -M^{-1}AM^{-1}$.</p>
+<ol>
+  <li>Utiliser la colinéarité du det</li>
+  <li>Soit $\psi : M \mapsto \log \text{det}(M)$. On pose $\psi = \log \circ \text{det}$ et en utilisant la différentielle $D\text{det}(A)(H) = \text{tr}(\text{com}(A)^TH)$ on obtient</li>
+</ol>
+
+\[\begin{align}
+    D\psi(M)(H) &amp;= D\log (\text{det}(M))(D\text{det}(M)(H)) \\
+                &amp;= \text{det}(M)^{-1}\text{tr}(\text{com}(A)^TH)
+\end{align}\]
+
+<p>ce qui permet de conclure en utilisant la formule $A^{-1} = det(A)^{-1}\text{com}(A)^T$</p>
+
+<p>:::</p>
+
+<hr />
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+  </body>
+</html>

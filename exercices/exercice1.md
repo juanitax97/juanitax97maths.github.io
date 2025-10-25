@@ -1,24 +1,17 @@
 ---
 layout: page
-title: Exercice de maths
+title: Tangente d'une fonction continue
 permalink: /exercices/exercice1/
 ---
 
-## Exercice
+## Exercice 1
 
-Soit  $f(x) = x^2 - 3x + 2$.  
-1. Calculer les racines de $f(x)$.  
-2. Étudier le signe de $f(x)$.
+Soit $f$ dérivable de $[a, b]$ dans $\mathbb{R}$ avec $f(a) = f(b) = 0$. Montrer que pour tout $x$ qui n'est pas dans $[a, b]$, il existe au moins une tangente à la courbe passant par $x$.
 
 ---
 
-## Correction
-
-1️⃣ Les racines sont les solutions de $x^2 - 3x + 2 = 0$.  
-$$(x - 1)(x - 2) = 0 \Rightarrow x = 1 \text{ ou } x = 2$$
-
-2️⃣ Étude du signe :  
-- \( f(x) > 0 \) pour \( x < 1 \) ou \( x > 2 \)  
-- \( f(x) < 0 \) pour \( 1 < x < 2 \)
+:::correction
+Prendre $c$ qui maximise $$\frac{f(c)}{c-x}$$
+:::
 
 ---
