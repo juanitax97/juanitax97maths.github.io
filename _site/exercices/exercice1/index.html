@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Exercice de maths - Mon site</title>
+    <link rel="stylesheet" href="/assets/main.css">
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true
+        },
+        svg: {
+            fontCache: 'global'
+        }
+    };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+  </head>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("article").forEach(el => {
+        el.innerHTML = el.innerHTML
+        .replace(/:::correction/g, '<div class="correction">')
+        .replace(/:::/g, '</div>');
+    });
+    });
+    </script>
+    <script src="/assets/js/corrections.js"></script>
+    <!-- Bouton fixe "Retour à l'accueil" -->
+<a href="/" id="back-home">🏠 Accueil</a>
+
+<style>
+#back-home {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #2b6cb0;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: background 0.2s ease;
+  z-index: 1000;
+}
+#back-home:hover {
+  background: #2c5282;
+}
+</style>
+
+  <body>
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Exercice de maths</h1>
+  </header>
+
+  <div class="post-content">
+    <h2 id="exercice">Exercice</h2>
+
+<p>Soit  $f(x) = x^2 - 3x + 2$.</p>
+<ol>
+  <li>Calculer les racines de $f(x)$.</li>
+  <li>Étudier le signe de $f(x)$.</li>
+</ol>
+
+<hr />
+
+<h2 id="correction">Correction</h2>
+
+<p>1️⃣ Les racines sont les solutions de $x^2 - 3x + 2 = 0$.<br />
+\((x - 1)(x - 2) = 0 \Rightarrow x = 1 \text{ ou } x = 2\)</p>
+
+<p>2️⃣ Étude du signe :</p>
+<ul>
+  <li>( f(x) &gt; 0 ) pour ( x &lt; 1 ) ou ( x &gt; 2 )</li>
+  <li>( f(x) &lt; 0 ) pour ( 1 &lt; x &lt; 2 )</li>
+</ul>
+
+<hr />
+
+<p><a href="/">← Retour à la page d’accueil</a></p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+  </body>
+</html>

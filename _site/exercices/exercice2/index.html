@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Estimation error with bounded loss and finite function family - Mon site</title>
+    <link rel="stylesheet" href="/assets/main.css">
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true
+        },
+        svg: {
+            fontCache: 'global'
+        }
+    };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+  </head>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("article").forEach(el => {
+        el.innerHTML = el.innerHTML
+        .replace(/:::correction/g, '<div class="correction">')
+        .replace(/:::/g, '</div>');
+    });
+    });
+    </script>
+    <script src="/assets/js/corrections.js"></script>
+    <!-- Bouton fixe "Retour à l'accueil" -->
+<a href="/" id="back-home">🏠 Accueil</a>
+
+<style>
+#back-home {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #2b6cb0;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: background 0.2s ease;
+  z-index: 1000;
+}
+#back-home:hover {
+  background: #2c5282;
+}
+</style>
+
+  <body>
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Estimation error with bounded loss and finite function family</h1>
+  </header>
+
+  <div class="post-content">
+    <h2 id="exercice">Exercice</h2>
+
+<p>Let $X\in \mathcal{X}, Y \in \mathcal{Y}$ be random variables and $\mathcal{F} \subset \mathcal{X}^{\mathcal{Y}}$ be a finite family of functions. Let $l : \mathcal{Y} \times \mathcal{Y} \to \mathbb{R}$ be a loss function such that \(\text{sup}_{f \in \mathcal{F}} l(Y,f(X)) \leq l_\infty\) as.
+Let’s define $\mathcal{R}(f) := \mathbb{E}[l(Y,f(X))]$ the risk and $\hat{\mathcal{R_n}} := \frac{1}{n} \sum_{i=1}^n l(Y_i, f(X_i))$ the empirical risk (where $(X_1, Y_1) \cdots (X_n,Y_n)$ iid with law of $(X,Y)$)</p>
+
+<ol>
+  <li>Show that for all $\delta \in ]0,1[$ and all $n$ large enough, with probability at least $1-\delta$, 
+\(\text{sup}_{f \in \mathcal{F}} |\mathcal{R_n}(f) - \mathcal{R}(f)| \leq l_{\infty}\sqrt{\frac{\log(2|\mathcal{F}|)}{2n}} + \frac{l_{\infty}}{\sqrt{2n}}\sqrt{\log(1/\delta)}\).</li>
+  <li>Show that 
+\(\mathbb{E}[\text{sup}_{f \in \mathcal{F}}|\mathcal{R_n}(f) - \mathcal{R}(f)|] \leq l_{\infty}\sqrt{\frac{\log(2|\mathcal{F}|)}{2n}}\)</li>
+</ol>
+
+<hr />
+
+<p>:::correction</p>
+<ol>
+  <li>use hoeffding’s concentration inequality</li>
+  <li>use hoeffding’s lemma and the bound on the maximum of gaussian independant variables
+:::
+—</li>
+</ol>
+
+<p><a href="/">← Retour à la page d’accueil</a></p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+  </body>
+</html>

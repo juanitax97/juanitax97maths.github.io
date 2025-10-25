@@ -1,0 +1,8 @@
+title: Mon site
+email: ton@email.com
+description: >- # courte description
+  Mon site personnel généré par Jekyll + minima.
+baseurl: "" # laisser vide pour nom.github.io
+url: "https://nom.github.io" # remplace nom par ton username
+theme: minima
+plugins: []
