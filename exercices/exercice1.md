@@ -22,5 +22,3 @@ $$(x - 1)(x - 2) = 0 \Rightarrow x = 1 \text{ ou } x = 2$$
 - \( f(x) < 0 \) pour \( 1 < x < 2 \)
 
 ---
-
-[← Retour à la page d’accueil]({{ '/' | relative_url }})

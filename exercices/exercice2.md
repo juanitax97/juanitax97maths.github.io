@@ -20,7 +20,6 @@ $$\mathbb{E}[\text{sup}_{f \in \mathcal{F}}|\mathcal{R_n}(f) - \mathcal{R}(f)|] 
 1. use hoeffding's concentration inequality
 2. use hoeffding's lemma and the bound on the maximum of gaussian independant variables
 :::
----
 
-[← Retour à la page d’accueil]({{ '/' | relative_url }})
+---
 
