@@ -1,0 +1,19 @@
+---
+layout: default
+title: Accueil
+---
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mon Premier Site</title>
+</head>
+<body>
+    <h1>Bonjour, je m’appelle Jean ! Je fais ici ma deuxième modification du site web !
+    </h1>
+    <a href="/exercices/algebre/">Voir les exercices d'algèbre</a>
+
+    <p>Bienvenue sur mon site hébergé avec GitHub Pages.</p>
+</body>
+</html>
