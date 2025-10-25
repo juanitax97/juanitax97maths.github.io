@@ -22,4 +22,5 @@ $$\mathbb{E}[\text{sup}_{f \in \mathcal{F}}|\mathcal{R_n}(f) - \mathcal{R}(f)|] 
 :::
 ---
 
-[← Retour à la page d’accueil](/)
+[← Retour à la page d’accueil]({{ '/' | relative_url }})
+
