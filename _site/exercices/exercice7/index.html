@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Kolmogorov&#39;s inequality - Mon site</title>
+    <link rel="stylesheet" href="/uioli/assets/main.css">
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true
+        },
+        svg: {
+            fontCache: 'global'
+        }
+    };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+  </head>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("article").forEach(el => {
+        el.innerHTML = el.innerHTML
+        .replace(/:::correction/g, '<div class="correction">')
+        .replace(/:::/g, '</div>');
+    });
+    });
+    </script>
+    <script src="/uioli/assets/js/corrections.js"></script>
+    <!-- Bouton fixe "Retour à l'accueil" -->
+<a href="/uioli/" id="back-home">🏠 Accueil</a>
+
+<style>
+#back-home {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #2b6cb0;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: background 0.2s ease;
+  z-index: 1000;
+}
+#back-home:hover {
+  background: #2c5282;
+}
+</style>
+
+  <body>
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Kolmogorov&#39;s inequality</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="exercice-7">Exercice 7</h1>
+
+<p>Let $X_1, \ldots, X_n : \Omega \to \mathbb{R} $ be independent random variables defined on a common probability space $\Omega, \mathcal{F}, \Pr $, with expected value<br />
+$\mathbb{E}[X_k] = 0$ and variance $\operatorname{Var}[X_k] &lt; +\infty$ for $k = 1, \ldots, n.$</p>
+
+<p>Then, for each $\lambda &gt; 0$,</p>
+
+\[\Pr\left( \max_{1 \le k \le n} |S_k| \ge \lambda \right)
+  \le \frac{1}{\lambda^2} \operatorname{Var}[S_n]
+  \equiv \frac{1}{\lambda^2} \sum_{k=1}^n \operatorname{Var}[X_k]
+  = \frac{1}{\lambda^2} \sum_{k=1}^n \mathbb{E}[X_k^2],\]
+
+<p>where ( S_k = X_1 + \cdots + X_k.)</p>
+
+<hr />
+
+<p>The convenience of this result is that we can <strong>bound the worst-case deviation of a random walk</strong> at any point in time using its value at the <strong>end of the time interval</strong>.</p>
+
+<hr />
+
+<p>:::correction</p>
+
+<p>The following argument employs <strong>discrete martingales</strong>.<br />
+As argued in the discussion of Doob’s martingale inequality, the sequence<br />
+$S_1, S_2, \ldots, S_n$ is a martingale.</p>
+
+<p>Define $(Z_i)_{i=0}^n$ as follows.<br />
+Let $Z_0 = 0$, and</p>
+
+\[Z_{i+1} =
+\begin{cases}
+S_{i+1}, &amp; \text{if } \max_{1 \le j \le i} |S_j| &lt; \lambda, \\
+Z_i, &amp; \text{otherwise.}
+\end{cases}\]
+
+<p>for all $i$.<br />
+Then $(Z_i)_{i=0}^n$ is also a martingale.</p>
+
+<p>For any martingale $M_i$ with $M_0 = 0$, we have that</p>
+
+\[\sum_{i=1}^n \mathbb{E}\!\left[(M_i - M_{i-1})^2\right]
+= \sum_{i=1}^n \mathbb{E}\!\left[M_i^2 - 2M_i M_{i-1} + M_{i-1}^2\right]
+= \sum_{i=1}^n \mathbb{E}\!\left[M_i^2 - M_{i-1}^2\right]
+- 2\mathbb{E}\!\left[M_{i-1}(M_i - M_{i-1})\right].\]
+
+<p>Since $\mathbb{E}[M_i - M_{i-1} \mid \mathcal{F}_{i-1}] = 0$, the last term vanishes, and we obtain</p>
+
+\[\sum_{i=1}^n \mathbb{E}\!\left[(M_i - M_{i-1})^2\right]
+= \mathbb{E}[M_n^2] - \mathbb{E}[M_0^2]
+= \mathbb{E}[M_n^2].\]
+
+<p>Applying this result to the martingale $(S_i)_{i=0}^n$, we have</p>
+
+\[\Pr\!\left( \max_{1 \le i \le n} |S_i| \ge \lambda \right)
+= \Pr\!\left( |Z_n| \ge \lambda \right)
+\le \frac{1}{\lambda^2} \mathbb{E}[Z_n^2]
+= \frac{1}{\lambda^2} \sum_{i=1}^n \mathbb{E}[(Z_i - Z_{i-1})^2]
+\le \frac{1}{\lambda^2} \sum_{i=1}^n \mathbb{E}[(S_i - S_{i-1})^2]
+= \frac{1}{\lambda^2} \mathbb{E}[S_n^2]
+= \frac{1}{\lambda^2} \operatorname{Var}[S_n].\]
+
+<p>proof by wikipedia</p>
+
+<p>:::</p>
+
+<hr />
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+  </body>
+</html>

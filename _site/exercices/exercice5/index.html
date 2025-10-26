@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Azumas&#39;s inequality - Mon site</title>
+    <link rel="stylesheet" href="/uioli/assets/main.css">
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true
+        },
+        svg: {
+            fontCache: 'global'
+        }
+    };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+  </head>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("article").forEach(el => {
+        el.innerHTML = el.innerHTML
+        .replace(/:::correction/g, '<div class="correction">')
+        .replace(/:::/g, '</div>');
+    });
+    });
+    </script>
+    <script src="/uioli/assets/js/corrections.js"></script>
+    <!-- Bouton fixe "Retour à l'accueil" -->
+<a href="/uioli/" id="back-home">🏠 Accueil</a>
+
+<style>
+#back-home {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #2b6cb0;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: background 0.2s ease;
+  z-index: 1000;
+}
+#back-home:hover {
+  background: #2c5282;
+}
+</style>
+
+  <body>
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Azumas&#39;s inequality</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="exercice-5-ltffp-114-bach">Exercice 5 (ltffp 1.14, Bach)</h1>
+
+<p>Assume that the sequence of random variables \((Z_i)_{i \geq 0}\) satisfies \(\mathbb{E}(Z_i \mid \mathcal{F}_{i-1}) = 0\) for an increasing sequence of increasing “$\sigma$-fields” \((\mathcal{F}_i)_{i \geq 0}\), and \(|Z_i| \leq c_i\) almost surely, for $i \geq 1$. Show that
+\(\mathbb{P}\left(\frac{1}{n} \sum_{i=1}^n Z_i \geq t\right) \leq \exp\left(\frac{-n^2 t^2}{2(c_1^2 + \cdots + c_n^2)}\right).\)</p>
+
+<hr />
+
+<p>:::correction</p>
+
+<p>On utilise le procédé de chernoff cramer.
+\(\begin{align*}
+    P(\frac{1}{n}\sum_{i=1}^n Z_i \geq t) &amp;= P(\exp(s\frac{1}{n}\sum_{i=1}^n Z_i)\geq \exp(st))\\
+            &amp;\leq E(\exp(s\frac{1}{n}\sum_{i=1}^n Z_i))\exp(-st) \quad \text{(markov)}
+\end{align*}\)</p>
+
+<p>En utilisant que $E(E(X|\mathcal{B})) = E(X)$ et le fait que si $Z$ est $\mathcal{B}$-mesurable, alors $E(ZX|\mathcal{B}) = ZE(X|\mathcal{B})$, on en déduit que 
+\(\begin{align*}
+    E\left[\exp(s\frac{1}{n}\sum_{i=1}^n Z_i)\right] &amp;= E\left[E\left[\exp(s\frac{1}{n}\sum_{i=1}^n Z_i)|\mathcal{F}_{n-1}\right]\right] \\
+    &amp;= E\left[\exp(s\frac{1}{n}\sum_{i=1}^{n-1} Z_i) E\left[\exp(s\frac{1}{n}Z_n)|\mathcal{F}_{n-1}\right]\right]
+\end{align*}\)</p>
+
+<p>Or, sachant $\mathcal{F}_{n-1}$ l’espérance de $Z_n$ est nulle et $|Z_n| \leq c_i$ presque surement ie $Z_n \in [-c_i;c_i]$ p.s. Donc en appliquant le lemme d’hoffding qui nous dit que si $Z \in [a;b]$ p.s alors $E(\exp(Z-E(Z))) \leq \exp(s^2(a-b)^2/8)$, on obtient que 
+\(\begin{align*}
+    E\left[\exp(s\frac{1}{n}Z_n)|\mathcal{F}_{n-1}\right] &amp;= E\left[\exp(\frac{s}{n}Z_n)|\mathcal{F}_{n-1}\right] \\
+            &amp;\leq \exp(\frac{s^2(2c_n)^2}{n^28})\\
+            &amp;= \exp(\frac{s^2c_n^2}{2n^2})
+\end{align*}\)</p>
+
+<p>ainsi, en itérant le processus, 
+\(\begin{align*}
+E\left[\exp(s\frac{1}{n}\sum_{i=1}^{n-1} Z_i) E\left[\exp(s\frac{1}{n}Z_n)|\mathcal{F}_{n-1}\right]\right] 
+&amp;\leq \exp(\frac{s^2c_n^2}{2n^2})E\left[\exp(\frac{s}{n}\sum_{i=1}^{n-1} Z_i)\right]\\
+&amp;= \exp(\frac{s^2c_n^2}{2n^2}) E\left[\exp(\frac{s}{n}\sum_{i=1}^{n-2} Z_i) E\left[\exp(\frac{s}{n}Z_{n-1})|\mathcal{F}_{n-2}\right]\right] \\
+&amp;\leq \exp(\frac{s^2c_n^2}{2n^2}) \exp(\frac{s^2c_{n-1}^2}{n^28})E\left[\exp(\frac{s}{n}\sum_{i=1}^{n-2} Z_i)\right]\\
+&amp; \quad\vdots\\
+&amp;\leq  \exp(\frac{s^2}{2n^2} \sum_{i=1}^n c_i^2)
+\end{align*}\)
+Et ainsi $P(\frac{1}{n}\sum_{i=1}^n Z_i \leq t)\leq \exp(\frac{s^2}{2n^2} \sum_{i=1}^n c_i^2-st)$. On pose $\gamma = \sum c_i^2$. Le minimum du deuxième terme est atteint en $s= \frac{t2n^2}{2\gamma} = \frac{tn^2}{\gamma} $ et ainsi
+\(\begin{align*}
+    P(\frac{1}{n}\sum_{i=1}^n Z_i \leq t) &amp;\leq \exp(\frac{t^2n^2}{2\gamma}-\frac{t^2n^2}{\gamma})\\
+            &amp;= \exp(-\frac{t^2n^2}{2\sum c_i^2})
+\end{align*}\)</p>
+
+<p>proof by junitax</p>
+
+<p>:::</p>
+
+<hr />
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+  </body>
+</html>

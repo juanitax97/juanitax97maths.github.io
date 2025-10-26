@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Loi des estimateur de moyenne et variance
-permalink: /exercices/exercice3/
+title: Expectation and Variance estimation law
+tag : [cochran, statistics, chi2, gaussian]
 ---
 
 ## Exercice 3
@@ -22,6 +22,8 @@ $$P_u(Y) = \langle u,Y \rangle u =  \frac{1}{\sqrt{n}}\sum_{i=1}^n Y_i\begin{pma
 Par ailleurs, comme $P_{u^\perp} = Id - P_u$, on obtient:
 $$ P_{u^\perp}(Y) = \frac{1}{\sigma}\begin{pmatrix} X_1 - \mu \\ \vdots \\ X_n-\mu\end{pmatrix} - \frac{1}{\sigma}\begin{pmatrix} \overline{X_n}-\mu \\ \vdots \\ \overline{X_n}-\mu\end{pmatrix} = \frac{1}{\sigma}\begin{pmatrix} X_1-\overline{X_n} \\ \vdots \\ X_n -\overline{X_n}\end{pmatrix}$$
 Ainsi, on obtient que $||P_u(Y)||^2 = \frac{n}{\sigma^2}(\overline{X_n}-\mu)^2$ et $||P_{u^\perp}(Y)||^2 = \frac{n-1}{\sigma^2}\widehat{S_n^2}$. Grâce au deuxième point de cochran appliqué au vecteur gaussien $Y$ avec la décomposition $E = u \oplus^\perp u^\perp$ on sait que $||P_u(Y)||^2$ et $||P_{u^\perp}(Y)||^2$ sont indépendant, et donc que $\frac{n}{\sigma^2}(\overline{X_n}-\mu)^2$ et $\frac{n-1}{\sigma^2}\widehat{S_n^2}$ sont indépendant, ce qui signifie bien que $\overline{X_n}$ et $\widehat{S_n^2}$ sont independantes. Par ailleurs, cochran nous dit que $||P_{u^\perp}(Y)||^2 \sim \chi^2(n-1)$ car $\text{dim}(\text{vect}(u)^\perp) = n-1$, ce qui nous donne que $\frac{n-1}{\sigma^2}\widehat{S_n^2} \sim \chi^2(n-1)$
+
+(proof by juanitax)
 :::
 
 ---

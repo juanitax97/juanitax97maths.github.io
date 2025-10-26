@@ -1,15 +1,19 @@
 ---
-layout: home
+layout: default
 title: Accueil
 ---
 
-Bienvenue sur mon site !
+# Exercices de maths
 
-## Exercices de maths
+<h1>Liste des exercices</h1>
 
-- [Exercice 1 : Tangente d'une fonction continue](exercices/exercice1/)
-- [Exercice 2 : Estimation error with bounded loss and finite function family](exercices/exercice2/)
-- [Exercice 3 : Loi des estimateur de moyenne et variance](exercices/exercice3/)
-- [Exercice 4 : Gradient de l'inverse et du det et application](exercices/exercice4/)
-
-
+<ul>
+  {% for exo in site.exercices %}
+    <li>
+      <a href="{{ exo.url | relative_url }}">{{ exo.title }}</a>
+      {% if exo.tags %}
+        <small> — {{ exo.tags | join: ", " }}</small>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>

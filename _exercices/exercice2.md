@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Estimation error with bounded loss and finite function family
+tag : [learning, statistics, hoeffding]
 permalink: /exercices/exercice2/
 ---
 
@@ -18,7 +19,7 @@ $$\mathbb{E}[\text{sup}_{f \in \mathcal{F}}|\mathcal{R_n}(f) - \mathcal{R}(f)|] 
 
 :::correction 
 1. use hoeffding's concentration inequality
-2. use hoeffding's lemma and the bound on the maximum of gaussian independant variables
+2. use hoeffding's lemma and the expectation of the  maximum of subgaussian variables inequality.
 :::
 
 ---

@@ -6,3 +6,9 @@ baseurl: "/uioli" # laisser vide pour nom.github.io
 url: "https://juanitax.github.io" # remplace nom par ton username
 theme: minima
 plugins: []
+
+collections:
+  exercices:
+    output: true      # pour que chaque fichier .md soit transformé en page HTML
+    permalink: /exercices/:name
+

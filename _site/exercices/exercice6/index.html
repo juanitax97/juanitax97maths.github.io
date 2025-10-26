@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Gaussian inequality (1.12 ltffp) - Mon site</title>
+    <link rel="stylesheet" href="/uioli/assets/main.css">
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true
+        },
+        svg: {
+            fontCache: 'global'
+        }
+    };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+  </head>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("article").forEach(el => {
+        el.innerHTML = el.innerHTML
+        .replace(/:::correction/g, '<div class="correction">')
+        .replace(/:::/g, '</div>');
+    });
+    });
+    </script>
+    <script src="/uioli/assets/js/corrections.js"></script>
+    <!-- Bouton fixe "Retour à l'accueil" -->
+<a href="/uioli/" id="back-home">🏠 Accueil</a>
+
+<style>
+#back-home {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #2b6cb0;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: background 0.2s ease;
+  z-index: 1000;
+}
+#back-home:hover {
+  background: #2c5282;
+}
+</style>
+
+  <body>
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Gaussian inequality (1.12 ltffp)</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="exercice-6">Exercice 6</h1>
+
+<p>For $X$ a Gaussian random variable with mean $0$ and variance $1$, show that for $t \geq 0$,
+\(\frac{1}{4} \exp(-t^2) \leq \mathbb{P}(X \geq t) \leq \exp(-t^2/2).\)</p>
+
+<hr />
+
+<p>:::correction</p>
+
+<p>majoration : 
+méthode 1 : 
+Soit $\phi: t \mapsto P(X \geq t)-\exp(-t^2/2)$. Etudions cette fonction. Elle est dérivable, 
+\(\begin{align*}
+    \phi'(t) &amp;= -\frac{1}{\sqrt{2\pi}} \exp(-t^2/2) + t\exp(-t^2/2)\\
+            &amp;= \exp(-t^2/2)(t - \frac{1}{\sqrt{2\pi}})
+\end{align*}\)
+$\phi’$ est donc négative puis positive sur $[0; +\infty[$, donc $\phi$ est décroissante puis croissante. Elle est donc majorée par $\text{max}(\phi(0),\phi(+\infty))$. \(\phi(0) = P(X \geq 0) - \exp(-0^2/2) = 1/2-1 = 1/2\) et $\phi(+\infty) = P(X \geq +\infty) - \exp(-(+\infty)^2/2) = 0 $ et donc $\phi \leq 0$ sur $R_+$</p>
+
+<p>methode 2:
+Comme dans hoeffding, on prend un $s$ positif et on applique markov a $\exp(sX)$ puis on utilise le fait que la génératrice des moments d’une normale $X \sim N(\mu,\sigma^2)$ est donnée par $M_X(s) = e^{s\mu + \frac{1}{2}\sigma^2s^2}$ ce qui donne pour tout $s&gt;0$: 
+\(\begin{align*}
+    P(X \geq t) &amp;= P(e^{sX} \geq e^{st})\\
+                &amp;\leq E(e^{sX})e^{-st}\\
+                &amp;=e^{\frac{s^2}{2}}e^{-st}
+\end{align*}\)
+et comme $s \mapsto \frac{t^2}{2} -st$ atteint son min en $s=t$, on choisi donc $s=t$ pour obtenir l’inégalité la plus précise, ce qui donne que \(P(X \geq t) \leq e^{-t^2/2}\).</p>
+
+<p>minoration : 
+Soit $\psi: t \mapsto P(X \geq t)-\frac{1}{4}\exp(-t)$. $\psi$ est deux fois dérvable.
+\(\begin{align*}
+    \psi'(t) &amp;= -\frac{1}{\sqrt{2\pi}} \exp(-t^2/2) + \frac{t}{2}\exp(-t^2)\\
+            &amp;= \exp(-t^2/2)(\frac{t}{2}\exp(-t^2/2) - \frac{1}{\sqrt{2\pi}})
+\end{align*}\)</p>
+
+<p>or la fonction $t \mapsto \frac{t}{2}\exp(-t^2/2) - \frac{1}{\sqrt{2\pi}}$ atteint son max en $1$ sur $[0;+\infty[$ (en étudiant cette fonction) et elle vaut $\approx -0.09$ quand $t=1$. On en déduit que $\psi’ &lt;0$ sur $R_+$ et que $\psi$ est donc décroissante. Or $\psi(+\infty) = P(X \geq +\infty) - \frac{1}{4}\exp(-(+\infty)^2) = 0$ et donc $\psi \geq 0$ sur $R_+$</p>
+
+<p>:::</p>
+
+<hr />
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+  </body>
+</html>

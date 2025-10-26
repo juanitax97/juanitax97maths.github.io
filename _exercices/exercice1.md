@@ -1,7 +1,6 @@
 ---
-layout: page
 title: Tangente d'une fonction continue
-permalink: /exercices/exercice1/
+tags: [dérivabilité, prépa]
 ---
 
 ## Exercice 1
